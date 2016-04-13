@@ -1,15 +1,12 @@
 /*
 simple parse script
 translates
-<LEDNumber> <R> <G> <B>
+<LEDNumber> <R> <G> <B>\n
 in to an array
 */
 #include "Arduino.h"
 #include <stdlib.h>
 #include "parse.h"
-
-
-//volatile char led[N_LEDS][3];
 
 void cmdParse(char c)
 {

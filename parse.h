@@ -1,7 +1,7 @@
 /*
 simple parse script
 translates
-<LEDNumber> <R> <G> <B>
+<LEDNumber> <G> <R> <B>\n
 in to an array
 */
 
