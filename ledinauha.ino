@@ -2,14 +2,16 @@
 #include "parse.h"
 #include "parse.c"
 
-
 NeoPixelBus<NeoGrbFeature, Neo800KbpsMethod> strip(N_LEDS, 2);
-
 
 void setup()
 {
     Serial.begin(9600);
     while(!Serial);
+
+    Serial.print("Hello!\nTalk to me like this:\n<LED_NUMBER> <R> <G> <B>\\n\nSource available at https://github.com/hacklab-turku/ledinauha\nN_LEDS: ");
+    Serial.println(N_LEDS,DEC);
+    Serial.print("brightness values between 0-127\nenjoy!\n");
 
     strip.Begin();
     strip.Show();
