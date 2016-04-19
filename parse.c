@@ -8,6 +8,23 @@ in to an array
 #include <stdlib.h>
 #include "parse.h"
 
+void rawParse(char c)
+{
+    static char command[4];
+    static char charcounter = 0;
+    
+    command[charcounter] = c;
+    charcounter++;
+    
+    if(charcounter == 4) {
+        charcounter = 0;
+        for(int i = 0; i < 4; i++) {
+            led[command[0]-128][i] = command[i+1];
+        }
+    }
+}
+    
+
 void cmdParse(char c)
 {
     static char command[20];

@@ -27,11 +27,22 @@ void loop()
 
 void serialEvent()
 {
+  static char rawBytesLeft = 0;
   while(Serial.available()>0)
   {
     char data=Serial.read();
     Serial.write(data);
-    cmdParse(data);
+    if (rawBytesLeft == 0) {
+      if (data > 127) {
+        rawBytesLeft = 3;
+        rawParse(data);
+      } else {
+        cmdParse(data);
+      }
+    } else {
+      rawParse(data);
+      rawBytesLeft--;
+    }
   }
 }
 
