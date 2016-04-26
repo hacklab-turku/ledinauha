@@ -8,20 +8,30 @@ in to an array
 #include <stdlib.h>
 #include "parse.h"
 
-void rawParse(char c)
+//volatile char ledsRefresh=0;
+
+int rawParse(char c)
 {
-    static char command[4];
-    static char charcounter = 0;
-    
-    command[charcounter] = c;
-    charcounter++;
-    
-    if(charcounter == 4) {
-        charcounter = 0;
-        for(int i = 0; i < 4; i++) {
-            led[command[0]-128][i] = command[i+1];
-        }
+    static char rawCommand[4];
+    static char rawCharcounter = 0;
+
+    if (c&0x80) {
+      rawCharcounter = 0;
     }
+    
+    rawCommand[rawCharcounter] = c;
+    
+    rawCharcounter++;
+    
+    if(rawCharcounter == 4) {
+        rawCharcounter = 0;
+        for(int i = 0; i < 3; i++) {
+            led[rawCommand[0]&0x7f][i] = rawCommand[i+1];
+        }
+        led[rawCommand[0]&0x7f][3] = 1;
+        return 1;
+    }
+    return 0;
 }
     
 
@@ -49,7 +59,7 @@ void cmdParse(char c)
             parsecounter ++;  //skip over the separator
         }
         //parse complete, dump values to the main array to the corresponding position
-          for(int i = 0; i < 3; i ++)
+        for(int i = 0; i < 3; i ++)
             led[values[0]][i]=values[i+1];
         charcounter=0;
     }

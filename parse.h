@@ -13,8 +13,10 @@ in to an array
 #define SEPARATOR ' '
 #define ENDOFLINE '\n'
 
-volatile char led[N_LEDS][3];
+volatile char led[N_LEDS][4];
 
+
+int rawParse(char c);
 void cmdParse(char c);
 
 #endif
