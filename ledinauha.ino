@@ -8,7 +8,7 @@ NeoPixelBus<NeoGrbFeature, Neo800KbpsMethod> strip(N_LEDS, 2);
 
 void setup()
 {
-    Serial.begin(74880);
+    Serial.begin(115200);
     while(!Serial);
 
     Serial.print("Hello!\nTalk to me like this:\n<LED_NUMBER> <R> <G> <B>\\n\nSource available at https://github.com/hacklab-turku/ledinauha\nN_LEDS: ");
