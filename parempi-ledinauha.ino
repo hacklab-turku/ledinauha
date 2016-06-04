@@ -38,6 +38,7 @@ void loop() {
       currentLed = 0;
       colorCounter = 0;
       strip.Show();
+      Serial.write(0);
     }
   }
 }
