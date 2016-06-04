@@ -15,6 +15,7 @@ void setup() {
   strip.Begin();
   strip.Show();
 
+  Serial.write(0); //indicates that the program is ready
 }
 
 void loop() {
@@ -38,7 +39,7 @@ void loop() {
       currentLed = 0;
       colorCounter = 0;
       strip.Show();
-      Serial.write(0);
+      Serial.write(0); //the command was successful
     }
   }
 }

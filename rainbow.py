@@ -39,11 +39,11 @@ while 1:
     #lastnow = now
 
     ser.write(bytes(data))
-    ser.flush()
+  ser.flush()
     #print("Write: "+str(time.time()-lastnow))
     #lastnow = now
 
-    #ser.read(1)
+  ser.read(1)
     #time.sleep(0.01)
     #print("Wait:  "+str(time.time()-lastnow))
     #lastnow = now
