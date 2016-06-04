@@ -13,7 +13,8 @@ def hsv2rgb(h,s,v):
 ser = serial.Serial(sys.argv[1], baudrate=int(sys.argv[2]))
 lastnow = time.time()
 
-time.sleep(2)
+ser.read(1)
+#time.sleep(2)
 
 while 1:
   data = []
