@@ -91,7 +91,7 @@ while True:
         pirStatus = requests.get(url="http://10.0.1.2/pi_api/pir/", params={"a":"getStatus"})
         pirTimestamp = int(json.loads(pirStatus.text)["timestamp"])
 
-        if (pirTimestamp > now-20):
+        if (pirTimestamp > now-60*5): #within last 5 minutes
             introOutroFade.startIntro()
         else:
             introOutroFade.startOutro()
